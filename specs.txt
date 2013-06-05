@@ -1,0 +1,26 @@
+
+# especificaciones hardware y software para la placa de IO
+
+## configuración hardware
+
+(...)
+
+## conexiones y discovery 
+
+- la placa funciona en modo AP con server DHCP (password ¿?)
+- conexión TCP, puerto XXXXX
+- discovery: mensaje UDP broadcast a puerto YYYYYY con el formato: "....."
+
+## protocolo
+
+El procolo tendrá el mismo formato que NMEA, esto es, $NOMBRE_DE_TRAMA dato1,dato2,dato3,*CHECKSUM\n
+
+$AGVER version,*CHECHSUM
+$AGCFG variable,value,*CHECHSUM
+$AGVAL variable,*CHECHSUM
+$AGDIG number,value,*CHECKSUM
+$AGANA number,value,*CHECKSUM
+
+AGVER la envía la placa al empezar a funcionar
+AGCFG la envía android a la placa para configurar
+AGDIG y AGANA podrán ser en ambas direcciones, de la placa a android para decirle el estado o de android a la placa para setear el estado
