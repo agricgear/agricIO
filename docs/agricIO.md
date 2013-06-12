@@ -73,7 +73,7 @@ Los dos disponibles ahora son:
 - PROTOCOL_CMD_REQUEST_SWITCH_STATE: Para solicitar el estado del interruptor
 - PROTOCOL_CMD_REPORT_SWITCH_STATE: Para reportar el estado del interruptor
 
-Si no solicitamos el estado del interruptor, recibiremos igualmente una PROTOCOL_CMD_REPORT_SWITCH_STATE
+Si no solicitamos el estado del interruptor, recibiremos igualmente una PROTOCOL_CMD_REPORT_SWITCH_STATE cuando el interruptor cambie de estado.
 
 ### Solicitar estado del interruptor
 
