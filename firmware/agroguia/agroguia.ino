@@ -1,6 +1,5 @@
 // Import libraries
 #include <SoftwareSerial.h>
-#include "Utils.h"
 #include "FirmataNano.h"
 
 // Definition of used pins
@@ -35,10 +34,10 @@ void setup()
   firmataProcessor.attachCallback(sysexCallback);
 
   // Set pinmode for switch
-  pinMode(PIN_SWITCH, INPUT);
+  pinMode(PIN_SWITCH, INPUT_PULLUP);
 
   // Read initial state for switch
-  switchState = digitalRead(PIN_SWITCH);
+  switchState = !digitalRead(PIN_SWITCH);
 
   // Attach change interrupts on pin 2 (INT0)
   attachInterrupt(0, onSwitchChange, CHANGE);
@@ -47,6 +46,7 @@ void setup()
 void loop()
 {
   firmataProcessor.refresh();
+  //if (Serial.available()) terminal();
 }
 
 void terminal()
@@ -64,7 +64,7 @@ void terminal()
 
 void onSwitchChange()
 {
-  uint8_t newSwitchState = digitalRead(PIN_SWITCH);
+  uint8_t newSwitchState = !digitalRead(PIN_SWITCH);
   if (newSwitchState != switchState) {
     switchState = newSwitchState;
     reportSwitchState();
